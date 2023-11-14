@@ -25,28 +25,19 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import { setToken } from './redux/slices/authSlice';
 
-// Import socket
-import { socket } from './utils/socket';
-
-// Import context
-import { SocketContext } from './contexts';
-
 // Import styles
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss'
 
-import { Socket} from "socket.io-client";
 const App = () => {
   const auth = getAuth();
   const dispatch = useDispatch();
-  const [soc, setSoc] = useState<Socket | null>(null);
   //----------------------------------------------------------------//
   //                          HOOKS                                 //
   //----------------------------------------------------------------//
   useEffect (() => {
     auth.currentUser?.getIdTokenResult().then((idTokenResult) => {
       dispatch(setToken(idTokenResult.token));
-      setSoc(socket(auth.currentUser!.uid!, idTokenResult.token));
     })
   }, [auth.currentUser]);
 
@@ -75,13 +66,13 @@ const App = () => {
 
   const routing = useRoutes(routes(user != null));
     return (
-      <SocketContext.Provider value={soc}>
+      <>
         {routing}
         <ToastContainer
           pauseOnFocusLoss={false}
           transition={Slide}
         />
-      </SocketContext.Provider>
+      </>
     );
 }
 

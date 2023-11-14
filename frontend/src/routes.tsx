@@ -3,10 +3,8 @@ import { Navigate } from "react-router-dom";
 
 // Import pages
 import Dashboard from './pages/Dashboard/Dashboard';
-import Collaboration from './pages/Collaboration/Collaboration';
 import DashboardLayout from './components/DashboardLayout/DashboardLayout';
 import Login from './pages/Login/Login';
-import MatchedPage from "./pages/Matchmake/MatchedPage";
 import ChangePasswordForm from './pages/ChangePassword/ChangePassword';
 import DeleteAccountForm from './pages/DeleteAccount/DeleteAccountForm';
 
