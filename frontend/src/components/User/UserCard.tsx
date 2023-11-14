@@ -1,13 +1,11 @@
 // Import react
 import { useEffect, useState } from "react";
-import { useFindMatchMutation } from "../../redux/api";
 // Import MUI
 import { Box, IconButton, InputLabel, MenuItem, Paper, Stack, TextField } from "@mui/material";
 
 // Import redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { initMatch } from "../../redux/slices/matchSlice";
 
 import { firebaseAuth } from "../../utils/firebase";
 import { map } from "lodash";
@@ -72,11 +70,9 @@ const UserCard = (props: UserCardProps) => {
   //----------------------------------------------------------------//
   //                          HOOKS                                 //
   //----------------------------------------------------------------//
-  const dispatch = useDispatch();
   const { data: user } = useSelector((state: RootState) => state.user);
   const [selectedCategory, setSelectedCategory] = useState<string>("undefined");
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>("");
-  const [findMatch, {}] = useFindMatchMutation();
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userToken, setUserToken] = useState<string | null>(null);
 
@@ -306,17 +302,7 @@ const UserCard = (props: UserCardProps) => {
                 fontSize: 13,
               }}
               disableRipple
-              onClick={() => {
-                findMatch({
-                  email: userEmail ? userEmail : "",
-                  id: userToken ? userToken : "",
-                  topic: selectedCategory === "undefined" ? "" : selectedCategory ? selectedCategory : "",
-                  difficulty: selectedDifficulty ? selectedDifficulty : "",
-                }).then((res) => {
-                  console.log(res);
-                  dispatch(initMatch(true));
-                });
-              }}
+              onClick={() => {}}
             >
               Match
             </IconButton>

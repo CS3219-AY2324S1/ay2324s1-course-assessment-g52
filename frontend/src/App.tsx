@@ -50,7 +50,6 @@ const App = () => {
     })
   }, [auth.currentUser]);
 
-  const {data: isMatching} = useSelector((state: RootState) => state.isMatching);
   const [user, loading] = useAuthState(auth);
 
   //----------------------------------------------------------------//
@@ -74,7 +73,7 @@ const App = () => {
     );
   }
 
-  const routing = useRoutes(routes(user != null, isMatching));
+  const routing = useRoutes(routes(user != null));
     return (
       <SocketContext.Provider value={soc}>
         {routing}

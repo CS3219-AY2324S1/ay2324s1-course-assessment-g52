@@ -1,10 +1,5 @@
 // Import react
 import React, { useEffect, useState } from "react";
-import { useFindMatchMutation } from "../../redux/api";
-
-// Import redux
-import { useSelector, useDispatch } from "react-redux";
-import { initMatch } from "../../redux/slices/matchSlice";
 
 // Import MUI
 import {
@@ -27,7 +22,6 @@ import { getAuth, signOut } from "firebase/auth";
 import "./Dashboard.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { set } from "lodash";
 import { firebaseAuth } from "../../utils/firebase";
 
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -38,15 +32,10 @@ const DashboardHeader = () => {
   //----------------------------------------------------------------//
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [findMatch, {}] = useFindMatchMutation();
 
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userToken, setUserToken] = useState<string | null>(null);
 
-  const isMatchButtonEnabled = useSelector(
-    (state: any) => state.isMatching.isMatchButtonEnabled
-  );
   //----------------------------------------------------------------//
   //                         HANDLERS                               //
   //----------------------------------------------------------------//
@@ -146,17 +135,7 @@ const DashboardHeader = () => {
                 fontSize: 13,
               }}
               disableRipple
-              disabled={!isMatchButtonEnabled}
               onClick={() => {
-                findMatch({
-                  id: userToken ? userToken : "",
-                  email: userEmail ? userEmail : "",
-                  topic: "",
-                  difficulty: "",
-                }).then((res) => {
-                  console.log(res);
-                  dispatch(initMatch(true));
-                });
               }}
             >
               Quick Match

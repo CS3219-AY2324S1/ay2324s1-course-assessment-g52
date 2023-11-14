@@ -88,22 +88,6 @@ export const api = createApi({
       }),
       invalidatesTags: ["Question"],
     }),
-    findMatch: builder.mutation<ResponseType, FindMatchProps>({
-      query: (matchData) => ({
-        url: `${MATCH_URL}/find-match`,
-        method: "POST",
-        body: matchData,
-      }),
-      invalidatesTags: ["Match"],
-    }),
-    checkMatch: builder.mutation<ResponseType, CheckMatchProps>({
-      query: (matchData) => ({
-        url: `${MATCH_URL}/check-match`,
-        method: "POST",
-        body: matchData,
-      }),
-      invalidatesTags: ["Match"],
-    }),
     deleteQuestion: builder.mutation<{ question: any }, string>({
       query: (id) => ({
         url: `${QUESTION_URL}/${id}`,
@@ -155,8 +139,6 @@ export const api = createApi({
 export const {
   useGetQuestionsQuery,
   useCreateQuestionMutation,
-  useFindMatchMutation,
-  useCheckMatchMutation,
   useRemoveUserMutation,
   useUpdateQuestionMutation,
   useDeleteQuestionMutation,
