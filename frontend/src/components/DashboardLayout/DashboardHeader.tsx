@@ -81,26 +81,6 @@ const DashboardHeader = () => {
             direction={'row'}
             spacing={5}
           >
-            <IconButton
-              sx={{
-                color: 'black',
-                backgroundColor: 'white',
-                height: 53,
-                borderRadius: 14,
-                border: '3px solid black',
-                "&:hover": {
-                  color: 'black',
-                  border: '3px solid black',
-                },
-                width: '140px',
-                fontFamily: 'Poppins',
-                fontWeight: 600,
-                fontSize: 13,
-              }}
-              disableRipple
-            >
-              Quick Match
-            </IconButton>
           </Stack>
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

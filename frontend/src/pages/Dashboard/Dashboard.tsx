@@ -13,7 +13,6 @@ import { Question, QuestionComplexity } from '../../utils/types';
 import AddQuestionModal from '../../components/DashboardLayout/Modals/AddQuestionModal';
 import QuestionDetailsModal from '../../components/DashboardLayout/Modals/QuestionDetailsModal';
 import QuestionsTable from '../../components/DashboardLayout/QuestionsTable';
-import UserCard from '../../components/User/UserCard';
 
 import { map } from 'lodash';
 
@@ -106,16 +105,9 @@ const Dashboard = () => {
             width: '85%',
           }}
         >
-         <Stack
-            direction={'column'}
-            width={'fit-content'}
-            spacing={3}
-          >
-              <UserCard />
-            </Stack>
           <Stack
             direction={'column'}
-            width={'70%'}
+            width={'100%'}
             spacing={3}
           >
             <QuestionsTable

@@ -1,14 +1,12 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { User } from './utils/types';
+import { Navigate } from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard/Dashboard';
-import Matchmake from './pages/Matchmake/Matchmake';
 import DashboardLayout from './components/DashboardLayout/DashboardLayout';
 import Login from './pages/Login/Login';
 import ChangePasswordForm from './pages/ChangePassword/ChangePassword';
 import DeleteAccountForm from './pages/DeleteAccount/DeleteAccountForm';
 
-const routes = (isLoggedIn: boolean, isMatching: boolean) => {
+const routes = (isLoggedIn: boolean) => {
   const r = [];
   const loggedInRoutes = [
     {
@@ -24,7 +22,7 @@ const routes = (isLoggedIn: boolean, isMatching: boolean) => {
       element: <DashboardLayout />,
       children: [
         // { path: '', element: <>app</> },
-        { path: 'dashboard', element: isMatching ? <Matchmake /> : <Dashboard /> },
+        { path: 'dashboard', element: <Dashboard /> },
         {
           path: 'change-password',
           element: <ChangePasswordForm />,
