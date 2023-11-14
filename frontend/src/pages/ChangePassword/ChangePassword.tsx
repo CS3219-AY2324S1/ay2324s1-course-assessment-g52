@@ -16,7 +16,6 @@ import {
 import { toast } from 'react-toastify';
 import { reauthenticateWithCredential, getAuth, Auth, AuthCredential, EmailAuthProvider, updatePassword } from "firebase/auth";
 
-import { User } from '../../utils/types';
 import { useNavigate } from 'react-router-dom';
 import { FirebaseError } from '@firebase/util';
 
@@ -50,7 +49,6 @@ const ChangePasswordForm = () => {
   const [newPassword, setNewPassword] = useState('');
   const navigate = useNavigate();
   const [retypePassword, setRetypePassword] = useState('');
-  const { id } = JSON.parse(localStorage.getItem('user') || '{}');
   const auth: Auth = getAuth()
   //----------------------------------------------------------------//
   //                         HANDLERS                               //
@@ -75,6 +73,7 @@ const ChangePasswordForm = () => {
     }
     const credentials: AuthCredential = EmailAuthProvider.credential(auth!.currentUser!.email!, oldPassword);
     reauthenticateWithCredential(auth!.currentUser!, credentials).then((res) => {
+      console.log(res);
       updatePassword(auth!.currentUser!, newPassword).then(() => {
         toast.success("Password changed successfully!");
         setButtonDisabled(false);

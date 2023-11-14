@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export type QuestionComplexity = 'Easy' | 'Medium' | 'Hard' | null;
 export const QuestionCategories = [
     "Arrays", "Bit Manipulation",

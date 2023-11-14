@@ -16,19 +16,6 @@ type UserCredentials = {
   firebaseId: string;
 }
 
-type FindMatchProps = {
-  id: string;
-  email: string;
-  topic: string;
-  difficulty: string;
-};
-
-type CheckMatchProps = {
-  id: string;
-  email: string;
-  topic: string;
-  difficulty: string;
-};
 
 type RemoveUserProps = {
   id: string;
@@ -36,19 +23,6 @@ type RemoveUserProps = {
   topic: string;
   difficulty: string;
 };
-
-type ChangePasswordObject = {
-  passwords: {
-    oldPassword: string;
-    newPassword: string;
-  },
-  id: string
-}
-
-type CheckPasswordObject = {
-  id: string;
-  password: string;
-}
 
 type QuestionUpdateProps = {
   id: string;
@@ -127,7 +101,7 @@ export const api = createApi({
       }),
       invalidatesTags: ["Match"],
     }),
-    deleteUser: builder.mutation<{ token: string; user: User }, string>({
+    deleteUser: builder.mutation<{ token: string; user: any }, string>({
       query: (id) => ({
         url: `${USER_URL}/users/signined/${id}`,
         method: 'DELETE',

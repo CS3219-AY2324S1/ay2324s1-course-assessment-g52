@@ -73,21 +73,10 @@ const UserCard = (props: UserCardProps) => {
   const { data: user } = useSelector((state: RootState) => state.user);
   const [selectedCategory, setSelectedCategory] = useState<string>("undefined");
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>("");
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [userToken, setUserToken] = useState<string | null>(null);
 
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in. Get the user's email and token.
-        const email = user?.email;
-        setUserEmail(email);
-        setUserToken(user.uid);
-      } else {
-        // User is signed out.
-        setUserEmail(null);
-        setUserToken(null);
-      }
+      console.log(user);
     });
 
     // Clean up the listener when the component unmounts.

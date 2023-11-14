@@ -51,6 +51,7 @@ const QuestionsTable = (props: QuestionTableProps) => {
   //                         HANDLERS                               //
   //----------------------------------------------------------------//
   const handleChangePage = (event: unknown, newPage: number) => {
+    console.log(event);
     setPage(newPage);
   };
 

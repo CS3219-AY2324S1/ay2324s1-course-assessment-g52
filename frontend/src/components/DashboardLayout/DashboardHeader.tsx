@@ -33,9 +33,6 @@ const DashboardHeader = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
 
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [userToken, setUserToken] = useState<string | null>(null);
-
   //----------------------------------------------------------------//
   //                         HANDLERS                               //
   //----------------------------------------------------------------//
@@ -64,15 +61,8 @@ const DashboardHeader = () => {
 
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in. Get the user's email and token.
-        const email = user?.email;
-        setUserEmail(email);
-        setUserToken(user.uid);
-      } else {
-        // User is signed out.
-        setUserEmail(null);
-        setUserToken(null);
+      if (!user) {
+        console.log("User is not logged in");
       }
     });
 

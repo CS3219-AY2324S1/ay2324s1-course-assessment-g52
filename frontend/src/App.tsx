@@ -1,5 +1,5 @@
 // Import react
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 // Import MUI
 import {
@@ -8,8 +8,7 @@ import {
 } from '@mui/material';
 
 // Import redux
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './redux/store';
+import { useDispatch } from 'react-redux';
 
 // Import routes
 import routes from './routes';

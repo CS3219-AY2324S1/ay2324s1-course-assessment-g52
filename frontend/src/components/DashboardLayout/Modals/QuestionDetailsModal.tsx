@@ -84,6 +84,7 @@ const QuestionDetailsModal = (props: QuestionDetailsModalProps) => {
         }
       });
       deleteQuestionPromise.then((res: any | null) => {
+        console.log(res);
         toast.success(`${title} deleted!`)
         setTitle('');
         setDescription('');
@@ -123,6 +124,7 @@ const QuestionDetailsModal = (props: QuestionDetailsModalProps) => {
         }
       });
       updateQuestionPromise.then((res: any | null) => {
+        console.log(res);
         toast.success(`${title} updated!`)
         setTitle('');
         setDescription('');

@@ -13,11 +13,20 @@ WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'postgres')\gexec
 GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS submissions;
 CREATE TABLE users (
 	id SERIAL,
  	email VARCHAR(254) UNIQUE,
-	firebaseId VARCHAR(254) UNIQUE,
-	PRIMARY KEY (email, firebaseId)
+	firebaseid VARCHAR(254) UNIQUE,
+	PRIMARY KEY (email, firebaseid)
 );
-INSERT INTO users ("email", "firebaseid") VALUES ('tanjianoway+3@gmail.com', 'leHNmbOIHEa2cD0ktmNHHUhBzsG2');
-INSERT INTO users ("email", "firebaseid") VALUES ('tanjianoway+1@gmail.com', 'E6fuI8uWckWIyLswh3tcE4wWAbF2');
+
+CREATE TABLE submissions (
+   id SERIAL,
+   firebaseid VARCHAR(254),
+   questionid INTEGER,
+   languageid INTEGER,
+   code TEXT,
+   updated_at TIMESTAMP DEFAULT NOW(),
+   PRIMARY KEY (firebaseid, questionid, languageid)
+);
