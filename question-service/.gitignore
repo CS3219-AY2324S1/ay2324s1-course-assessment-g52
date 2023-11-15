@@ -1,0 +1,6 @@
+node_modules
+.env
+openapi-run.yaml
+api-gateway.yaml
+.DS_Store
+serviceAccount.json

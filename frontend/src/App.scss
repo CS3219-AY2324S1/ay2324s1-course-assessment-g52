@@ -1,0 +1,26 @@
+@use '@scss/variables.scss' as *;
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,300,600,700);
+#root {
+  /* max-width: 1280px; */
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: $background-gray;
+  min-width: 1200px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

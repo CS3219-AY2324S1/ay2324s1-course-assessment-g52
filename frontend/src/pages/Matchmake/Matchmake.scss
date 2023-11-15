@@ -1,0 +1,19 @@
+.matchmake_background {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.matchmake_container {
+  background: white;
+  border-radius: 5%;
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}

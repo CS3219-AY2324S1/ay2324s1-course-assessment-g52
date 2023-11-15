@@ -1,0 +1,56 @@
+@use '@scss/variables.scss' as *;
+
+
+.login_root {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    min-width: 1100px;
+}
+
+.login_container {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: 'white';
+    .login_row{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .login_body {
+        width: 70%;
+        .login_title {
+            font-size: 35px;
+            font-weight: 600;
+            text-align: left;
+        }
+        .login_subtitle {
+            text-align: left;
+        }
+        
+        .login_form_container {
+            width: 100%;
+        }
+    }
+    
+}
+
+.logo_container {
+    width: 60%;
+    height:100%;
+    background-color: $background-gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .logo_row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}

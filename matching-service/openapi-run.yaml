@@ -1,0 +1,116 @@
+swagger: '2.0'
+info:
+  title: Matching Service Cloud Endpoints
+  description: Matching Service Cloud Endpoints to Matching Service Cloud Run
+  version: 2.0.0
+host: matching-service-espv2-3bicbrzzhq-an.a.run.app
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://matching-service-3bicbrzzhq-an.a.run.app
+  jwt_audience: https://matching-service-3bicbrzzhq-an.a.run.app
+  protocol: h2
+securityDefinitions:
+  firebase:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "https://securetoken.google.com/peer-prep-399105"
+    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+    x-google-audiences: "peer-prep-399105"
+paths:
+  /api/match/find-match:
+    post:
+      security:
+        - firebase: []
+      summary: Finds a match for the user
+      operationId: findMatch
+      parameters:
+        - name: requestBody
+          in: body
+          required: true
+          description: User Information for adding a user to the queue
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              email:
+                type: string
+              topic:
+                type: string
+              difficulty:
+                type: string
+      responses:
+        "200":
+          description: User Added to the matching queue
+          schema:
+            type: object
+        "500":
+          description: Error Occurred Could not be added to the matching queue
+          schema:
+            type: object
+  /api/match/check-match:
+    post:
+      security:
+        - firebase: []
+      summary: Checks a match for the user
+      operationId: checkMatch
+      parameters:
+        - name: requestBody
+          in: body
+          required: true
+          description: User Information for checking a match
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              email:
+                type: string
+              topic:
+                type: string
+              difficulty:
+                type: string
+      responses:
+        "200":
+          description: Match Found for the user
+          schema:
+            type: object
+        "500":
+          description: Error Occurred Could not check match
+          schema:
+            type: object
+  /api/match/remove-user:
+    post:
+      security:
+        - firebase: []
+      summary: Removes a user from the match queue
+      operationId: removeUser
+      parameters:
+        - name: requestBody
+          in: body
+          required: true
+          description: User information for removing a user
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              email:
+                type: string
+              topic:
+                type: string
+              difficulty:
+                type: string
+      responses:
+        "200":
+          description: User removed from the queue
+          schema:
+            type: object
+        "500":
+          description: Error Occurred Could not remove a user from the queue
+          schema:
+            type: object
